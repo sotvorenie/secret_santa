@@ -113,6 +113,17 @@ const handleCard = async () => {
 
     localStorage.setItem('giftFor', randomCard.value.name)
 
+    cardsStore.cards = cardsStore.cards.map(card => {
+      if (card.name === randomCard.value.name) {
+        return {
+          ...card,
+          isChosen: true,
+        }
+      }
+
+      return card
+    })
+
     setTimeout(() => {
       play('applePay')
       modalVisible.value = true
