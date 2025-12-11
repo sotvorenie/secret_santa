@@ -975,11 +975,9 @@ a[class] {
 .lights__one, .lights__two {
   z-index: -2;
   filter: blur(10px) brightness(0);
-  width: 100%;
 }
 .lights__one {
-  left: -1.5625rem;
-  top: -2.1875rem;
+  scale: 1.1;
 }
 .lights__two {
   bottom: 3.125rem;
