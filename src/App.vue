@@ -86,18 +86,14 @@ onBeforeMount(() => {
 })
 
 onMounted(async () => {
-  if (pagesStore.activePageIndex !== 2) {
-    try {
-      preloadAssets();
+  try {
+    preloadAssets();
 
-      await getCards();
-    } catch (err) {
-      isError.value = true;
-    } finally {
-      isLoading.value = false;
-    }
-  } else {
-    isLoading.value = false
+    await getCards();
+  } catch (err) {
+    isError.value = true;
+  } finally {
+    isLoading.value = false;
   }
 })
 </script>
@@ -113,9 +109,17 @@ onMounted(async () => {
 
     <OrientationBlock/>
 
-    <KeepAlive>
-      <Component :is="pages[pagesStore.activePageIndex]"/>
-    </KeepAlive>
+    <Suspense>
+      <template #default>
+        <KeepAlive>
+          <Component :is="pages[pagesStore.activePageIndex]"/>
+        </KeepAlive>
+      </template>
+
+      <template #fallback>
+        <Skeleton/>
+      </template>
+    </Suspense>
   </div>
 
   <Skeleton v-else-if="isLoading && !isError"/>
