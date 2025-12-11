@@ -967,7 +967,6 @@ a[class] {
 .lights {
   width: 100%;
   height: 100%;
-  overflow: hidden;
 }
 .lights.is-active .lights__one, .lights.is-active .lights__two {
   filter: blur(1px) brightness(1) hue-rotate(330deg);
