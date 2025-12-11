@@ -94,8 +94,9 @@ a {
 }
 
 button {
-  outline: none;
   -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
 
   @include hover {
     filter: brightness(1.2);

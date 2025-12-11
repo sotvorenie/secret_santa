@@ -358,6 +358,11 @@ a[class] {
   text-decoration: none;
 }
 
+button {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+}
 @media (any-hover: hover) {
   button:hover {
     filter: brightness(1.2);
