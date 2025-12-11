@@ -902,7 +902,7 @@ button {
 
 .modal {
   inset: 0;
-  backdrop-filter: blur(3px) brightness(1.4);
+  backdrop-filter: blur(5px) brightness(1.3);
 }
 .modal__close {
   width: 2.5rem !important;
