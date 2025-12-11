@@ -94,8 +94,11 @@ a {
 }
 
 button {
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+
   @include hover {
-  filter: brightness(1.2);
-  scale: 0.95;
-}
+    filter: brightness(1.2);
+    scale: 0.95;
+  }
 }
