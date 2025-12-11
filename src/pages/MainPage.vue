@@ -114,7 +114,6 @@ const handleCard = async () => {
     localStorage.setItem('giftFor', randomCard.value.name)
 
     setTimeout(() => {
-      isLoading.value = false
       play('applePay')
       modalVisible.value = true
     }, 1000)
@@ -126,8 +125,11 @@ const handleCard = async () => {
         type: 'response',
       }
       errorModalVisible.value = true
-      isLoading.value = false
     }
+  } finally {
+    setTimeout(() => {
+      isLoading.value = false
+    }, 1000)
   }
 }
 
@@ -156,7 +158,8 @@ const checkUser = () => {
 
 // проверка, что данный пользователь еще никем не выбран
 const checkForWhom = (id) => {
-  const check = cards.value.find(card => card?.id === id)?.isChosen || true
+  console.log(id)
+  const check = cards.value.find(card => card?.id === id)?.isChosen ?? true
 
   if (check) {
     errorModalInfo.value = {
