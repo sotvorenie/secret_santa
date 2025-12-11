@@ -261,6 +261,10 @@ body {
   height: 100%;
   width: 100%;
   overflow: hidden;
+  margin: auto;
+  max-height: 1000px;
+  max-width: 500px;
+  position: relative;
 }
 
 main {
