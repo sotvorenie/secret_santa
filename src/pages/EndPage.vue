@@ -22,7 +22,7 @@ onActivated(() => {
 
 <template>
 
-  <div class="end-page flex-center flex-column">
+  <div class="end-page flex-column">
     <p class="name text-w700">{{name}}</p>
     <p class="text-w600">дарит подарок</p>
     <p class="name text-w700">{{formatName(giftFor)}}</p>

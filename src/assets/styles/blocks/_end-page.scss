@@ -6,6 +6,10 @@
 
   height: 100%;
   row-gap: rem(10);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: rem(200);
 
   .name {
     color: $color-accent;

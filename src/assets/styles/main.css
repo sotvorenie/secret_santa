@@ -943,6 +943,7 @@ a[class] {
   position: absolute;
   bottom: 0;
   z-index: -1;
+  width: 70%;
 }
 
 .background-music {
@@ -964,7 +965,8 @@ a[class] {
 }
 
 .lights {
-  inset: 0;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
 }
 .lights.is-active .lights__one, .lights.is-active .lights__two {
@@ -973,6 +975,7 @@ a[class] {
 .lights__one, .lights__two {
   z-index: -2;
   filter: blur(10px) brightness(0);
+  width: 100%;
 }
 .lights__one {
   left: -1.5625rem;
@@ -1121,6 +1124,10 @@ a[class] {
   font-size: clamp(2.375rem, 1.8828125rem + 2.1875vw, 3.25rem);
   height: 100%;
   row-gap: 0.625rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 12.5rem;
 }
 .end-page .name {
   color: #fe7971;
