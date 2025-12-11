@@ -28,6 +28,7 @@ import applePay from './assets/sounds/apple-pay.mp3'
 import usePagesStore from "./store/usePagesStore.js";
 const pagesStore = usePagesStore();
 import useCardsStore from "./store/useCardsStore.js";
+import OrientationBlock from "./components/ui/OrientationBlock.vue";
 const cardsStore = useCardsStore();
 
 const pages = [HelloPage, MainPage, EndPage]
@@ -109,6 +110,8 @@ onMounted(async () => {
     <BackgroundMusic/>
 
     <Lights/>
+
+    <OrientationBlock/>
 
     <KeepAlive>
       <Component :is="pages[pagesStore.activePageIndex]"/>
