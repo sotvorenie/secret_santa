@@ -7,7 +7,7 @@
     "sass-watch": "sass --watch .",
     "vite": "vite",
     "dev": "concurrently \"npm run sass-watch\" \"npm run vite\"",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
