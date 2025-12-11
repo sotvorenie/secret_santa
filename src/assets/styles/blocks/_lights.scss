@@ -3,6 +3,7 @@
 
 .lights {
   inset: 0;
+  overflow: hidden;
 
   &.is-active {
     .lights__one, .lights__two {

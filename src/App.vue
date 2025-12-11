@@ -103,7 +103,7 @@ onMounted(async () => {
 
 <template>
 
-  <div class="content" style="height: 100%" v-if="!isLoading && !isError">
+  <div class="content" style="height: 100%; overflow: hidden" v-if="!isLoading && !isError">
     <SnowFall/>
 
     <BackgroundMusic/>

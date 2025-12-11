@@ -14,7 +14,7 @@ const handleButton = () => {
 
 <template>
 
-  <div class="lights" :class="{'is-active': isActive}">
+  <div class="lights position-absolute" :class="{'is-active': isActive}">
     <img class="lights__one position-absolute" :src="light1" height="410" width="439" alt=""/>
 
     <img class="lights__two position-absolute" :src="light2" height="300" width="1366" alt=""/>

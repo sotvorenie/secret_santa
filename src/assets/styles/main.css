@@ -261,6 +261,8 @@ svg * {
 
 html {
   overflow: hidden !important;
+  height: 100vh;
+  width: 100vw;
 }
 
 body {
@@ -963,6 +965,7 @@ a[class] {
 
 .lights {
   inset: 0;
+  overflow: hidden;
 }
 .lights.is-active .lights__one, .lights.is-active .lights__two {
   filter: blur(1px) brightness(1) hue-rotate(330deg);
