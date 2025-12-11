@@ -1,5 +1,5 @@
 <script setup>
-import {onBeforeMount, ref} from "vue";
+import {ref} from "vue";
 
 import {useSound} from "../../composables/useSound.js";
 const {play} = useSound()
@@ -13,22 +13,20 @@ const emits = defineEmits(['done']);
 
 import Modal from "../common/Modal.vue";
 
-const users = ref([])
+const activeUser = ref({})
 
-const activeUser = ref()
-
-const handleUser = (index) => {
+const handleUser = (userCard) => {
   play('click2')
 
-  if (activeUser.value === index) {
-    activeUser.value = -1
+  if (activeUser.value.id === userCard.id) {
+    activeUser.value = {}
     userStore.userName = ''
 
     return
   }
 
-  activeUser.value = index
-  userStore.userName = users.value[activeUser.value]
+  activeUser.value = userCard
+  userStore.userName = activeUser.value.name
 }
 
 const modalVisible = ref(false)
@@ -36,7 +34,7 @@ const modalVisible = ref(false)
 const handleDone = () => {
   modalVisible.value = false
 
-  localStorage.setItem('userName', users.value[activeUser.value])
+  localStorage.setItem('userName', activeUser.value.name)
 
   emits('done')
 }
@@ -44,26 +42,22 @@ const handleDone = () => {
 const checkDisable = (name) => {
   return cardsStore.disabledUsers.some(user => user === name)
 }
-
-onBeforeMount(() => {
-  users.value = cardsStore.cards?.map(card => card.name)
-})
 </script>
 
 <template>
   <div class="users">
     <ul class="users__list">
-      <li v-for="(user, index) in users"
-          :key="user"
+      <li v-for="(card, index) in cardsStore?.cards"
+          :key="card.id"
           :class="{
             'users__item list-item': true,
-            'is-active': activeUser === index,
-            'disabled': checkDisable(user)
+            'is-active': activeUser?.id === card?.id,
+            'disabled': checkDisable(card?.name)
           }"
           :style="{'animation-delay': `${index * 0.05}s`}"
       >
-        <button type="button" @click="handleUser(index)">
-          {{user}}
+        <button type="button" @click="handleUser(card)">
+          {{card?.name}}
         </button>
       </li>
     </ul>
@@ -75,7 +69,7 @@ onBeforeMount(() => {
                   type="button"
                   v-sound="'click'"
                   @click="open"
-                  :disabled="activeUser < 0"
+                  :disabled="!activeUser.id"
           >
             Подтвердить
           </button>
