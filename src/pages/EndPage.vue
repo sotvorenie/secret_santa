@@ -1,5 +1,5 @@
 <script setup>
-import {onActivated, ref} from "vue";
+import {onMounted, ref} from "vue";
 
 import {formatName} from "../composables/useNameFormat.js";
 
@@ -29,7 +29,7 @@ const checkForWhom = () => {
   return cardsStore.cards?.find(card => card.name === giftFor.value)?.isChosen ?? false;
 }
 
-onActivated(() => {
+onMounted(() => {
   localStorage.setItem('page', 'end')
 
   name.value = userStore.userName.length ? userStore.userName : localStorage.getItem('userName')

@@ -1,5 +1,5 @@
 <script setup>
-import {onActivated, ref, watch} from "vue";
+import {onMounted, ref, watch} from "vue";
 
 import TextBlock from "../components/common/TextBlock.vue";
 import ArrowIcon from "../assets/images/icons/ArrowIcon.vue";
@@ -73,7 +73,7 @@ const handleDone = () => {
   }
 }
 
-onActivated(() => {
+onMounted(() => {
   localStorage.clear()
 
   userStore.userName = ''

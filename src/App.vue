@@ -109,17 +109,7 @@ onMounted(async () => {
 
     <OrientationBlock/>
 
-    <Suspense>
-      <template #default>
-        <KeepAlive>
-          <Component :is="pages[pagesStore.activePageIndex]"/>
-        </KeepAlive>
-      </template>
-
-      <template #fallback>
-        <Skeleton/>
-      </template>
-    </Suspense>
+    <Component :is="pages[pagesStore.activePageIndex]"/>
   </div>
 
   <Skeleton v-else-if="isLoading && !isError"/>

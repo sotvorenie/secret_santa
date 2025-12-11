@@ -1,5 +1,5 @@
 <script setup>
-import {computed, onActivated, onDeactivated, ref} from "vue";
+import {computed, onBeforeUnmount, onMounted, ref} from "vue";
 
 import {apiGetCards, apiSetCard} from "../api/cards.js";
 
@@ -212,8 +212,7 @@ const closeModal = () => {
 // закрытие модального окна ошибки
 const closeErrorModal = () => {
   if (errorModalInfo.value.type === 'user') {
-    localStorage.setItem('page', 'hello')
-    window.location.reload()
+    pagesStore.activePageIndex = 0
   }
   if (errorModalInfo.value.type === 'no_user') {
     isFlipped.value = false
@@ -225,7 +224,7 @@ const closeErrorModal = () => {
 
 //=========================================================//
 //-- хуки --//
-onActivated(() => {
+onMounted(() => {
   if (!userStore.userName) {
     userStore.userName = localStorage.getItem('userName')
   }
@@ -242,7 +241,7 @@ onActivated(() => {
   }, 500)
 })
 
-onDeactivated(() => {
+onBeforeUnmount(() => {
   isFlipped.value = false
 })
 //=========================================================//
