@@ -1,0 +1,36 @@
+@use '../helpers/index' as *;
+@use '../variables' as *;
+
+.modal {
+  inset: 0;
+  backdrop-filter: blur(3px) brightness(1.15);
+
+  &__close {
+    @include square($button-size);
+
+    background: $color-accent;
+    top: rem(-20);
+    right: rem(-20);
+    border-radius: 50%;
+
+    svg {
+      width: 40%;
+    }
+  }
+
+  &__content {
+    width: 85%;
+    background: $color-dark-alt;
+    padding: rem(25) rem(15);
+    border-radius: $radius-medium;
+    border: $border-light-alt;
+  }
+
+  &__fox {
+    @include abs-x;
+
+    position: absolute;
+    bottom: 0;
+    z-index: -1;
+  }
+}

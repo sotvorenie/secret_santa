@@ -1,0 +1,99 @@
+@use 'helpers/index' as *;
+@use 'variables' as *;
+
+html {
+  overflow: hidden !important;
+}
+
+body {
+  font-size: rem(18);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: $font-family-base;
+  color: $color-light;
+  background: $color-dark-alt;
+  font-weight: 500;
+  overflow: hidden;
+}
+
+#app {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+main {
+  flex-grow: 1;
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+  font-weight: 600;
+}
+
+h1, .h1 {
+  font-size: rem(32);
+}
+
+h2, .h2 {
+  font-size: rem(28);
+}
+
+h3, .h3 {
+  font-size: rem(24);
+}
+
+h4, .h4 {
+  font-size: rem(20);
+}
+
+h5, .h5 {
+  font-size: rem(18);
+}
+
+h6, .h6 {
+  font-size: rem(16);
+}
+
+a,
+button,
+label,
+input,
+textarea,
+select,
+svg * {
+  transition-duration: $transition-duration;
+  color: currentColor;
+}
+
+button, input, textarea {
+  transition-duration: $transition-duration;
+}
+
+button, input, textarea {
+  @include reset_button;
+}
+
+input::placeholder, textarea::placeholder {
+  color: $color-light-alt;
+}
+
+a {
+  color: inherit;
+
+  @include hover {
+    color: $color-accent !important;
+  }
+
+  &[class] {
+    text-decoration: none;
+  }
+}
+
+button {
+  @include hover {
+  filter: brightness(1.2);
+  scale: 0.95;
+}
+}

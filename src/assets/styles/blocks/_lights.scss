@@ -1,0 +1,33 @@
+@use '../helpers/index' as *;
+@use '../variables' as *;
+
+.lights {
+  inset: 0;
+
+  &.is-active {
+    .lights__one, .lights__two {
+      filter: blur(1px) brightness(1) hue-rotate(330deg);
+    }
+  }
+
+  &__one, &__two {
+    z-index: -2;
+    filter: blur(10px) brightness(0);
+  }
+
+  &__one {
+    left: rem(-25);
+    top: rem(-35);
+  }
+
+  &__two {
+    bottom: rem(50);
+    rotate: 30deg;
+    scale: 2;
+  }
+
+  &__btn {
+    top: rem(10);
+    left: rem(80);
+  }
+}

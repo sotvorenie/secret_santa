@@ -1,0 +1,11 @@
+@use '../helpers/index' as *;
+@use '../variables' as *;
+
+.skeleton {
+  height: 100%;
+  font-size: rem(20);
+
+  img {
+    width: 40%;
+  }
+}

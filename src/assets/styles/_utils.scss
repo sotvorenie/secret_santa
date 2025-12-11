@@ -1,0 +1,65 @@
+@use 'helpers/index' as *;
+@use 'variables' as *;
+
+.visually-hidden {
+  @include visually-hidden;
+}
+
+.recolor-svg {
+  svg {
+    &[stroke]:not([stroke="none"]),
+    *[stroke]:not([stroke="none"]) {
+      stroke: currentColor !important;
+    }
+
+    &[fill]:not([fill="none"]),
+    *[fill]:not([fill="none"]) {
+      fill: currentColor !important;
+    }
+
+    path,
+    circle,
+    rect,
+    polygon,
+    polyline,
+    line,
+    ellipse {
+      &[stroke]:not([stroke="none"]) {
+        stroke: currentColor !important;
+      }
+      &[fill]:not([fill="none"]) {
+        fill: currentColor !important;
+      }
+    }
+  }
+}
+
+.hover-color-accent {
+  @include hover {
+    color: $color-accent;
+    border-color: $color-accent;
+  }
+}
+
+.button-width-svg {
+
+  svg {
+    width: 80%;
+    height: auto;
+  }
+}
+
+.disabled {
+  pointer-events: none;
+  filter: opacity(0.5);
+}
+
+.blue, .orange {
+  font-weight: 700;
+}
+.blue {
+  color: #01a6ff;
+}
+.orange {
+  color: $color-accent;
+}

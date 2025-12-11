@@ -1,0 +1,17 @@
+@use '../helpers/index' as *;
+@use '../variables' as *;
+
+.end-page {
+  @include fluid-text(52, 38);
+
+  height: 100%;
+  row-gap: rem(10);
+
+  .name {
+    color: $color-accent;
+  }
+
+  &__fox {
+    bottom: 0;
+  }
+}

@@ -1,0 +1,13 @@
+@use '../helpers/index' as *;
+@use '../variables' as *;
+
+.hello-page {
+  overflow: hidden;
+
+  &__fox-hi {
+    position: absolute;
+    width: 100%;
+    left: -10%;
+    bottom: 0;
+  }
+}

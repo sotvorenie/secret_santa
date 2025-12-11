@@ -1,0 +1,33 @@
+@use '../helpers/index' as *;
+@use '../variables' as *;
+
+.button {
+  background: $color-accent;
+  padding: rem(10) rem(20);
+  border-radius: $radius-big;
+  color: $color-light;
+  column-gap: rem(5);
+
+  svg {
+    width: rem(30);
+  }
+
+  &:disabled {
+    opacity: .5;
+    pointer-events: none;
+  }
+
+  &.rounded {
+    @include square(60);
+    @include flex-center();
+
+    border: $border-light-alt;
+    padding: 0;
+    border-radius: 50%;
+    background: $color-dark;
+
+    &.is-active {
+      background: $color-accent;
+    }
+  }
+}

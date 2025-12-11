@@ -1,0 +1,64 @@
+@use '../helpers/index' as *;
+@use '../variables' as *;
+
+.main-page {
+  height: 100%;
+
+  &__back {
+    top: rem(20);
+    right: rem(10);
+
+    svg {
+      rotate: 0deg !important;
+      width: rem(25);
+      height: auto;
+    }
+  }
+
+  &__content {
+    width: 100%;
+    padding-inline: rem(15);
+  }
+
+  &__title {
+    margin-bottom: rem(20);
+  }
+
+  &__list {
+    --gap: 10px;
+  }
+
+  &__card {
+    cursor: pointer;
+    aspect-ratio: 1;
+    color: $color-dark-alt;
+    background: $color-light-alt;
+    border-radius: $radius-medium;
+    transition-duration: 0.2s;
+
+    @include hover {
+      background: $color-accent;
+      scale: 0.95;
+    }
+  }
+
+  &__user {
+
+    &-name {
+      color: $color-accent;
+      margin-bottom: rem(20);
+    }
+  }
+
+  &__btn {
+    width: 100%;
+  }
+
+  &__error {
+    font-size: rem(20);
+
+    button {
+      margin-top: rem(30);
+    }
+  }
+}

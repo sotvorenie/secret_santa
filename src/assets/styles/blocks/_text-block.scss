@@ -1,0 +1,22 @@
+@use '../helpers/index' as *;
+@use '../variables' as *;
+
+.text-block {
+  @include abs-center;
+
+  top: 30%;
+  width: 95%;
+  min-height: rem(180);
+  background: $color-light;
+  border-radius: $radius-medium;
+  color: $color-dark;
+  padding: rem(20);
+  line-height: 1.8;
+
+  &__btn {
+    position: absolute;
+    right: rem(20);
+    top: 85%;
+    z-index: 2;
+  }
+}

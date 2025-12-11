@@ -1,0 +1,92 @@
+$breakpoints: (
+        'ms': 481px,
+        'mb': 768px,
+        'ls': 1024px,
+        'ds': 1441px,
+        'ks': 1921px,
+);
+$grid-columns: 12 !default;
+
+// базовые классы (оставляем как есть, не трогаем)
+.text-center {text-align: center !important;}
+.text-left {text-align: left !important;}
+.text-right {text-align: right !important;}
+.text-w400 {font-weight: 400 !important;}
+.text-w500 {font-weight: 500 !important;}
+.text-w600 {font-weight: 600 !important;}
+.text-w700 {font-weight: 700 !important;}
+.text-nowrap {white-space: nowrap !important;}
+
+.flex { display: flex !important; }
+.flex-column { flex-direction: column !important; }
+.flex-row { flex-direction: row !important; }
+.flex-center {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+.flex-between {justify-content: space-between !important;}
+.flex-around {justify-content: space-around !important;}
+.flex-wrap {flex-wrap: wrap !important;}
+.flex-align-center {align-items: center !important;}
+.flex-justify-center {justify-content: center !important;}
+.flex-justify-between {justify-content: space-between !important;}
+
+.m-auto {margin: auto !important;}
+.position-relative { position: relative !important; }
+.position-absolute { position: absolute !important; }
+.position-fixed {position: fixed !important;}
+.position-sticky {position: sticky !important;}
+
+.d-inline-block { display: inline-block !important; }
+.overflow-hidden { overflow: hidden !important; }
+.overflow-y-scroll { overflow-y: scroll !important; }
+.overflow-x-scroll { overflow-x: scroll !important; }
+
+.user-select-none { user-select: none !important; }
+.cursor-pointer { cursor: pointer !important; }
+.cursor-not-allowed { cursor: not-allowed !important; }
+.cursor-default { cursor: default !important; }
+.cursor-text {cursor: text !important;}
+
+.z--1 {z-index: -1 !important;}
+.z-0 {z-index: 0 !important;}
+.z-1 {z-index: 1 !important;}
+.z-10 {z-index: 10 !important;}
+.z-100 {z-index: 100 !important;}
+.z-1000 {z-index: 1000 !important;}
+.z-1001 {z-index: 1001 !important;}
+.z-10000 {z-index: 10000 !important;}
+
+// 🧱 GRID СЕТКА
+
+.row {
+  display: grid !important;
+  grid-template-columns: repeat($grid-columns, 1fr);
+  gap: var(--gap) !important;
+  width: 100%;
+}
+
+// базовые колонки
+@for $i from 1 through $grid-columns {
+  .col-#{$i} {
+    grid-column: span $i;
+  }
+}
+
+// адаптивные колонки
+@each $breakpoint, $value in $breakpoints {
+  @media (min-width: $value) {
+    @for $i from 1 through $grid-columns {
+      .#{$breakpoint}-col-#{$i} {
+        grid-column: span $i !important;
+      }
+    }
+  }
+}
+
+.col-auto { grid-column: auto; }
+
+.row .row {
+  grid-column: 1 / -1;
+}

@@ -1,0 +1,21 @@
+@use 'normalize';
+@use 'fonts';
+@use 'variables';
+@use 'utils';
+@use 'globals';
+@use 'classes';
+@use 'transition';
+
+@use 'blocks/skeleton';
+@use 'blocks/text-block';
+@use 'blocks/button';
+@use 'blocks/modal';
+@use 'blocks/background-music';
+@use 'blocks/loading';
+@use 'blocks/lights';
+
+@use 'blocks/hello-page';
+@use 'blocks/users';
+@use 'blocks/main-page';
+@use 'blocks/card';
+@use 'blocks/end-page';
