@@ -1,5 +1,5 @@
 <script setup>
-import {onBeforeMount, onMounted, ref, watch} from "vue";
+import {onBeforeMount, onMounted, ref} from "vue";
 
 import {apiGetCards} from "./api/cards.js";
 
