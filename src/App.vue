@@ -117,6 +117,6 @@ onMounted(async () => {
 
   <Skeleton v-else-if="isLoading && !isError"/>
 
-  <span v-else-if="!isLoading && isError">Что-то пошло не так</span>
+  <div class="flex-center" style="height: 100%" v-if="!isLoading && isError">Что-то пошло не так..</div>
 
 </template>
