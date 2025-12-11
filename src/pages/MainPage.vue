@@ -1,5 +1,5 @@
 <script setup>
-import {onActivated, ref} from "vue";
+import {computed, onActivated, onDeactivated, ref} from "vue";
 
 import {apiGetCards, apiSetCard} from "../api/cards.js";
 
@@ -80,7 +80,9 @@ const handleBack = () => {
 //=========================================================//
 //-- список карт --//
 // список карт
-const cards = ref([])
+const cards = computed(() => {
+  return cardsStore.cards?.filter(card => card.name !== userStore.userName)
+})
 
 // случайный пользователь
 const randomCard = ref()
@@ -112,6 +114,7 @@ const handleCard = async () => {
     await setCard()
 
     localStorage.setItem('giftFor', randomCard.value.name)
+    localStorage.setItem('page', 'end')
 
     cardsStore.cards = cardsStore.cards.map(card => {
       if (card.name === randomCard.value.name) {
@@ -169,7 +172,6 @@ const checkUser = () => {
 
 // проверка, что данный пользователь еще никем не выбран
 const checkForWhom = (id) => {
-  console.log(id)
   const check = cards.value.find(card => card?.id === id)?.isChosen ?? true
 
   if (check) {
@@ -210,7 +212,8 @@ const closeModal = () => {
 // закрытие модального окна ошибки
 const closeErrorModal = () => {
   if (errorModalInfo.value.type === 'user') {
-    pagesStore.activePageIndex = 0
+    localStorage.setItem('page', 'hello')
+    window.location.reload()
   }
   if (errorModalInfo.value.type === 'no_user') {
     isFlipped.value = false
@@ -227,8 +230,6 @@ onActivated(() => {
     userStore.userName = localStorage.getItem('userName')
   }
 
-  cards.value = cardsStore.cards.filter(card => card.name !== userStore.userName)
-
   localStorage.setItem('page', 'main')
 
   const check = checkUser()
@@ -239,6 +240,10 @@ onActivated(() => {
   setTimeout(() => {
     backVisible.value = true
   }, 500)
+})
+
+onDeactivated(() => {
+  isFlipped.value = false
 })
 //=========================================================//
 </script>
