@@ -3,7 +3,7 @@
 
 .modal {
   inset: 0;
-  backdrop-filter: blur(3px) brightness(1.15);
+  backdrop-filter: blur(3px) brightness(1.4);
 
   &__close {
     @include square($button-size);
@@ -32,6 +32,5 @@
     position: absolute;
     bottom: 0;
     z-index: -1;
-    width: 70%;
   }
 }
