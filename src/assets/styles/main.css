@@ -157,30 +157,9 @@ svg * {
   }
 }
 @font-face {
-  font-family: "Inter";
-  src: url("../fonts/Inter-Regular.woff2") format("woff2");
+  font-family: "Comic Sans MS";
+  src: url("../fonts/ComicSansMS.woff2") format("woff2");
   font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Inter";
-  src: url("../fonts/Inter-Medium.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Inter";
-  src: url("../fonts/Inter-SemiBold.woff2") format("woff2");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Inter";
-  src: url("../fonts/Inter-Bold.woff2") format("woff2");
-  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
@@ -271,7 +250,7 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
-  font-family: "Inter", sans-serif;
+  font-family: "Comic Sans MS", sans-serif;
   color: #ebeced;
   background: #5f6d78;
   font-weight: 500;
@@ -1129,7 +1108,7 @@ button {
 .end-page {
   font-size: clamp(2.375rem, 1.8828125rem + 2.1875vw, 3.25rem);
   height: 100%;
-  row-gap: 0.625rem;
+  row-gap: 0.3125rem;
   display: flex;
   flex-direction: column;
   align-items: center;
