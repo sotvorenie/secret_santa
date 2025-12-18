@@ -25,20 +25,22 @@ const closeModal = () => {
   pagesStore.activePageIndex = 0
 }
 
-const checkForWhom = () => {
-  return cardsStore.cards?.find(card => card.name === giftFor.value)?.isChosen ?? false;
+const check = () => {
+  const card = cardsStore.cards?.find(card => card.name === giftFor.value)
+
+  if (!card.isChosen) return false
+
+  return card.whoChoise === name.value
 }
 
-onMounted(() => {
+onMounted(async () => {
   localStorage.setItem('page', 'end')
 
   name.value = userStore.userName.length ? userStore.userName : localStorage.getItem('userName')
 
   giftFor.value = localStorage.getItem('giftFor')
 
-  const check = checkForWhom()
-
-  if (!check) modalVisible.value = true
+  if (!check()) modalVisible.value = true
 })
 </script>
 

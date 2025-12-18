@@ -121,6 +121,7 @@ const handleCard = async () => {
         return {
           ...card,
           isChosen: true,
+          whoChoise: userStore.userName,
         }
       }
 
