@@ -9,7 +9,7 @@ import Timer from "@ui/Timer.vue";
 
   <Suspense timeout="0">
     <template #default>
-      <div class="h-full">
+      <div :key="$route.fullPath" class="h-full">
         <OrientationBlock/>
 
         <SnowFall/>
