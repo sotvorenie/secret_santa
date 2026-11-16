@@ -7,19 +7,21 @@ import Timer from "@ui/Timer.vue";
 
 <template>
 
-  <OrientationBlock/>
-
-  <SnowFall/>
-
-  <Timer/>
-
-  <Suspense>
+  <Suspense timeout="0">
     <template #default>
-      <RouterView/>
+      <div class="h-full">
+        <OrientationBlock/>
+
+        <SnowFall/>
+
+        <Timer/>
+
+        <RouterView/>
+      </div>
     </template>
 
     <template #fallback>
-      <Loading/>
+      <Loading class="abs-center"/>
     </template>
   </Suspense>
 
