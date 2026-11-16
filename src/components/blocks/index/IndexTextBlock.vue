@@ -1,16 +1,13 @@
 <script setup lang="ts">
 import {ref, watch} from "vue";
 
+import {Step} from "@/types/step.ts";
+
 import ButtonUi from "@ui/ButtonUi.vue";
 import Icon from "@ui/Icon.vue";
 
-const props = defineProps({
-  text: String,
-  btnContent: Object
-})
-
-const emits = defineEmits<{
-  clickBtn: [],
+const props = defineProps<{
+  step: Step
 }>()
 
 const btnVisible = ref(false)
@@ -20,7 +17,7 @@ const onTextAnimationEnd = () => {
 }
 
 watch(
-    () => props.text,
+    () => props.step.id,
     () => btnVisible.value = false
 )
 </script>
@@ -40,17 +37,17 @@ watch(
                 appear
                 @after-enter="onTextAnimationEnd"
     >
-      <p :key="text" v-html="text"/>
+      <p :key="step?.id" v-html="step?.text()"/>
     </Transition>
 
     <Transition name="fade-scale">
       <ButtonUi v-if="btnVisible"
                 class="absolute right-4 -bottom-5"
-                @click="emits('clickBtn')"
+                @click="step?.onClick"
       >
-        {{btnContent?.text}}
+        {{step?.btn?.text}}
 
-        <Icon :name="btnContent?.icon" :size="17"/>
+        <Icon :name="step?.btn?.icon" :size="step?.btn?.iconSize"/>
       </ButtonUi>
     </Transition>
   </div>

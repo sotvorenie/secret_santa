@@ -2,6 +2,8 @@
 import {computed, ref} from "vue";
 import {useRouter} from "vue-router";
 
+import {Step} from "@/types/step.ts";
+
 import IndexUsers from "@components/index/IndexUsers.vue";
 import IndexTextBlock from "@components/index/IndexTextBlock.vue";
 
@@ -10,10 +12,6 @@ import Modal from "@ui/Modal.vue";
 import ArrowIcon from "@icons/ArrowIcon.vue";
 import UserIcon from "@icons/UserIcon.vue";
 import GiftIcon from "@icons/GiftIcon.vue";
-
-import foxHi from "/images/fox/привет.webp";
-import foxHmm from "/images/fox/думает.webp";
-import foxLove from "/images/fox/обнял.webp";
 
 import useUserStore from "@store/useUserStore.ts";
 const userStore = useUserStore();
@@ -24,35 +22,41 @@ const usersModalVisible = ref<boolean>(false)
 
 const stepIndex = ref<number>(0)
 
-const steps = [
+const steps: Step[] = [
   {
+    id: 1,
     text: () => '<span>Привет! Рад видеть тебя) Я <span class="text-blue-500 font-semibold">Снежный Лис</span> :)</span>',
-    fox: foxHi,
+    fox: '/images/fox/привет.webp',
     btn: {
       text: 'Далее',
       icon: ArrowIcon,
+      iconSize: 17,
     },
     onClick: () => {
       stepIndex.value++
     },
   },
   {
-    text: () => '<span>А вот тебя я не знаю.. Давай знакомиться?!)',
-    fox: foxHmm,
+    id: 2,
+    text: () => '<span>А вот тебя я не знаю.. Давай познакомимся)',
+    fox: '/images/fox/думает.webp',
     btn: {
       text: 'Выбрать пользователя',
       icon: UserIcon,
+      iconSize: 23,
     },
     onClick: () => {
       usersModalVisible.value = true
     },
   },
   {
+    id: 3,
     text: () => `<span>Рад познакомиться, <span class="text-accent font-semibold">${userStore.currentUser?.name}</span>! Погнали выбирать кому будешь дарить Новогодний подарок)</span>`,
-    fox: foxLove,
+    fox: '/images/fox/обнял.webp',
     btn: {
       text: 'Погнали)',
       icon: GiftIcon,
+      iconSize: 17,
     },
     onClick: () => {
       router.replace('/main')
@@ -81,15 +85,12 @@ const handleDone = () => {
       />
     </Transition>
 
-    <IndexTextBlock :text="currentStep.text()"
-               :btn-content="currentStep.btn"
-               @click-btn="currentStep.onClick"
-    />
+    <IndexTextBlock :step="currentStep"/>
 
     <Modal v-model="usersModalVisible">
       <template #default>
         <IndexUsers v-model:selected-user="userStore.currentUser"
-               @done="handleDone"
+                    @done="handleDone"
         />
       </template>
     </Modal>

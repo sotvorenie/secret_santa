@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import {ref} from "vue";
+import {useRouter} from "vue-router";
 
 import {User} from "@/types/user.ts";
 
@@ -16,6 +17,8 @@ defineProps<{
   errorText: string
 }>()
 
+const router = useRouter()
+
 const errorModalVisible = defineModel('errorModalVisible', {type: Boolean})
 
 const isFlipped = ref<boolean>(false)
@@ -28,6 +31,11 @@ const handleCard = () => {
   setTimeout(() => {
     resultModalVisible.value = true
   }, 500)
+}
+
+const handleCloseErrorModal = () => {
+  userStore.clear()
+  router.replace("/")
 }
 </script>
 
@@ -68,7 +76,7 @@ const handleCard = () => {
       </template>
     </Modal>
 
-    <Modal v-model="errorModalVisible" @close="$router.replace('/')">
+    <Modal v-model="errorModalVisible" @close="handleCloseErrorModal">
       <template #default="{close}">
         <div class="text-center">
           <p class="text-xl mb-3">Ошибка...</p>

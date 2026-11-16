@@ -45,6 +45,8 @@ onBeforeMount(getUsers)
 <template>
   <div>
     <template v-if="!isLoading">
+      <p class="text-center mb-4">Выберите себя из списка</p>
+
       <ul class="mb-4 flex flex-col gap-2">
         <li v-for="(user, index) in users"
             :key="user.id"
@@ -54,7 +56,7 @@ onBeforeMount(getUsers)
                       'border rounded-regular w-full p-2',
                       selectedUser?.name === user.name ? 'bg-accent border-accent' : 'border-light',
                   ]"
-                  :disabled="user.isChosen"
+                  :disabled="user.isChose"
                   @click="handleUser(user)"
           >
             {{user.name}}
@@ -62,34 +64,32 @@ onBeforeMount(getUsers)
         </li>
       </ul>
 
-      <Transition name="fade-scale">
-        <Modal v-model="confirmModalVisible">
-          <template #activator="{open}">
-            <ButtonUi class="w-full"
-                      :disabled="!selectedUser?.id"
-                      @click="open"
-            >
-              Подтвердить
-            </ButtonUi>
-          </template>
+      <Modal v-model="confirmModalVisible">
+        <template #activator="{open, close}">
+          <ButtonUi class="w-full"
+                    :disabled="!selectedUser?.id"
+                    @click="open"
+          >
+            Подтвердить
+          </ButtonUi>
+        </template>
 
-          <template #default="{close}">
-            <div>
-              <p class="text-center mb-3">Вы уверены?</p>
+        <template #default="{close}">
+          <div>
+            <p class="text-center mb-3">Вы уверены?</p>
 
-              <div class="users__btn-bar grid grid-cols-2 gap-3">
-                <ButtonUi variant="muted" @click="close">
-                  Нет
-                </ButtonUi>
+            <div class="users__btn-bar grid grid-cols-2 gap-3">
+              <ButtonUi variant="muted" @click="close">
+                Нет
+              </ButtonUi>
 
-                <ButtonUi @click="handleDone">
-                  Да
-                </ButtonUi>
-              </div>
+              <ButtonUi @click="handleDone">
+                Да
+              </ButtonUi>
             </div>
-          </template>
-        </Modal>
-      </Transition>
+          </div>
+        </template>
+      </Modal>
     </template>
 
     <Loading v-else/>
