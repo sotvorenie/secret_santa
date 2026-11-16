@@ -5,16 +5,6 @@
   font-size: fluid($max, $min);
 }
 
-@mixin hide {
-  opacity: 0;
-  visibility: hidden;
-}
-
-@mixin show {
-  opacity: 1;
-  visibility: visible;
-}
-
 @mixin flex-center($isInline: false) {
   @if $isInline {
     display: inline-flex;
@@ -36,13 +26,13 @@
 @mixin abs-x {
   position: absolute;
   left: 50%;
-  translate: -50%;
+  transform: translate(-50%, 0);
 }
 
 @mixin abs-y {
   position: absolute;
   top: 50%;
-  translate: 0 -50%;
+  transform: translate(0, -50%);
 }
 
 @mixin square($size) {
@@ -52,14 +42,9 @@
   min-height: rem($size) !important;
 }
 
-@mixin fluid-square($max, $min) {
-  aspect-ratio: 1 / 1;
-
-  width: fluid($max, $min);
-  height: fluid($max, $min);
-
-  min-width: fluid($max, $min);
-  min-height: fluid($max, $min);
+@mixin fluid-square($maxSize, $minSize) {
+  width: fluid($maxSize, $minSize) !important;
+  height: fluid($maxSize, $minSize) !important;
 }
 
 @mixin visually-hidden {
@@ -75,8 +60,10 @@
   overflow: hidden !important;
 }
 
-@mixin reset_button {
-  padding: 0;
-  background-color: transparent;
-  border: none;
+@mixin hover() {
+  @media (any-hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
 }

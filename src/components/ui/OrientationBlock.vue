@@ -1,26 +1,26 @@
 <script setup>
 import {onBeforeUnmount, onMounted, ref} from "vue";
 
-const isLandscape = ref(false);
+const isLandscape = ref(false)
 
 const checkOrientation = () => {
-  isLandscape.value = window.matchMedia("(orientation: landscape)").matches;
-};
+  isLandscape.value = window.matchMedia("(orientation: landscape)").matches
+}
 
 onMounted(() => {
-  checkOrientation();
-  window.addEventListener("resize", checkOrientation);
-  window.addEventListener("orientationchange", checkOrientation);
-});
+  checkOrientation()
+  window.addEventListener("orientationchange", checkOrientation)
+})
 
 onBeforeUnmount(() => {
-  window.removeEventListener("resize", checkOrientation);
-  window.removeEventListener("orientationchange", checkOrientation);
-});
+  window.removeEventListener("orientationchange", checkOrientation)
+})
 </script>
 
 <template>
-  <div v-if="isLandscape" class="orientation-blocker flex-center">
+  <div v-if="isLandscape"
+       class="orientation-blocker flex-center"
+  >
     <div class="orientation-message">
       Пожалуйста, держите телефон вертикально 📱
     </div>

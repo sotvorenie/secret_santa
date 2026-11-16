@@ -1,8 +1,16 @@
-@use 'helpers/index' as *;
-@use 'variables' as *;
+@use 'helpers' as *;
 
-.visually-hidden {
-  @include visually-hidden;
+.img-container {
+  @include flex-center();
+
+  overflow: hidden;
+  background: var(--dark-alt);
+
+  img, video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
 .recolor-svg {
@@ -32,34 +40,4 @@
       }
     }
   }
-}
-
-.hover-color-accent {
-  @include hover {
-    color: $color-accent;
-    border-color: $color-accent;
-  }
-}
-
-.button-width-svg {
-
-  svg {
-    width: 80%;
-    height: auto;
-  }
-}
-
-.disabled {
-  pointer-events: none;
-  filter: opacity(0.5);
-}
-
-.blue, .orange {
-  font-weight: 700;
-}
-.blue {
-  color: #01a6ff;
-}
-.orange {
-  color: $color-accent;
 }

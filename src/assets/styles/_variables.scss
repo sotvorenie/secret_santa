@@ -1,31 +1,21 @@
-@use 'helpers/index' as *;
+@use 'helpers' as *;
 
-$font-family-base: 'Comic Sans MS', sans-serif;
+:root {
+  --light: #FFFFFF;
 
-$color-light: #ebeced;
-$color-light-alt: #cccfd2;
-$color-dark: #3d4b56;
-$color-dark-alt: #5f6d78;
-$color-accent: #fe7971;
-$color-success: #59eb68;
+  --dark: #000000;
+  --dark-alt: #141414;
+  --dark-15: #262626;
+  --dark-5: #555555;
 
-$border-dark: 1px solid $color-dark;
-$border-dark-alt: 1px solid $color-dark-alt;
-$border-accent: 1px solid $color-accent;
-$border-light: 1px solid $color-light;
-$border-light-alt: 1px solid $color-light-alt;
+  --accent: #fe7971;
 
-$radius-big: rem(100);
-$radius: rem(52);
-$radius-medium: rem(16);
-$radius-regular: rem(8);
-$radius-small: rem(4);
+  --font-family-base: 'Comic Sans MS';
 
-$container-width: rem(1920);
-$container-padding-x: fluid(50, 25);
+  --radius-regular: #{rem(12)};
+  --radius-medium: #{rem(22)};
+  --radius-big: #{rem(32)};
 
-$transition-duration: 0.2s;
-$transition-duration-fast: 0.1s;
-
-$position-size: rem(20);
-$button-size: 40;
+  --transition-duration: 0.3s;
+  --transition-duration-big: 1.5s;
+}

@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme inline {
+    --color-light: var(--light);
+    --color-dark: var(--dark);
+    --color-dark-alt: var(--dark-alt);
+    --color-dark-15: var(--dark-15);
+    --color-accent: var(--accent);
+
+    --radius-regular: 0.75rem;
+    --radius-medium: 1.375rem;
+}
+
+@utility abs-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+}
+
+@utility abs-x {
+    position: absolute;
+    left: 50%;
+    translate: -50%;
+}
+
+@utility abs-y {
+    position: absolute;
+    top: 50%;
+    translate: 0 -50%;
+}
+
+@utility square-* {
+    width: calc(var(--spacing) * --value(number)) !important;
+    min-width: calc(var(--spacing) * --value(number)) !important;
+    height: calc(var(--spacing) * --value(number)) !important;
+    min-height: calc(var(--spacing) * --value(number)) !important;
+}
+
+@utility line-clamp-* {
+    display: -webkit-box;
+    -webkit-line-clamp: --value(integer);
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+
+@utility flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
