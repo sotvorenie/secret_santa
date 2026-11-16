@@ -1,7 +1,3 @@
-<script setup>
-
-</script>
-
 <template>
 
   <div class="flex-center flex-col gap-4 text-xl">
