@@ -13,9 +13,10 @@ const userStore = useUserStore();
 
 defineProps<{
   randomUser: User | null
-  errorModalVisible: boolean
   errorText: string
 }>()
+
+const errorModalVisible = defineModel('errorModalVisible', {type: Boolean})
 
 const isFlipped = ref<boolean>(false)
 

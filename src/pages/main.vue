@@ -90,8 +90,8 @@ await onLoad()
 
 <template>
 
-  <MainContent :random-user="randomUser"
-               :error-modal-visible="errorModalVisible"
+  <MainContent v-model:error-modal-visible="errorModalVisible"
+               :random-user="randomUser"
                :error-text="errorText"
   />
 
