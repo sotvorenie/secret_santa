@@ -88,9 +88,10 @@ const handleDone = () => {
     <IndexTextBlock :step="currentStep"/>
 
     <Modal v-model="usersModalVisible">
-      <template #default>
+      <template #default="{close}">
         <IndexUsers v-model:selected-user="userStore.currentUser"
                     @done="handleDone"
+                    @close="close"
         />
       </template>
     </Modal>
