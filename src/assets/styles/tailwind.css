@@ -4,7 +4,6 @@
     --color-light: var(--light);
     --color-dark: var(--dark);
     --color-dark-alt: var(--dark-alt);
-    --color-dark-15: var(--dark-15);
     --color-accent: var(--accent);
 
     --radius-regular: 0.75rem;
@@ -49,4 +48,33 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@utility recolor-svg {
+    svg {
+        &[stroke]:not([stroke="none"]),
+        *[stroke]:not([stroke="none"]) {
+            stroke: currentColor !important;
+        }
+
+        &[fill]:not([fill="none"]),
+        *[fill]:not([fill="none"]) {
+            fill: currentColor !important;
+        }
+
+        path,
+        circle,
+        rect,
+        polygon,
+        polyline,
+        line,
+        ellipse {
+            &[stroke]:not([stroke="none"]) {
+                stroke: currentColor !important;
+            }
+            &[fill]:not([fill="none"]) {
+                fill: currentColor !important;
+            }
+        }
+    }
 }
