@@ -7,6 +7,7 @@ export default defineConfig({
     plugins: [
         VueRouter({
             dts: 'src/typed-router.d.ts',
+            importMode: 'sync',
         }),
         vue(),
         tailwindcss(),
