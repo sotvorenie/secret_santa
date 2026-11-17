@@ -26,7 +26,7 @@ const steps: Step[] = [
   {
     id: 1,
     text: () => '<span>Привет! Рад видеть тебя) Я <span class="text-blue-500 font-semibold">Снежный Лис</span> :)</span>',
-    fox: '/images/fox/привет-2.webp',
+    fox: '/images/fox/привет.webp',
     btn: {
       text: 'Далее',
       icon: ArrowIcon,
