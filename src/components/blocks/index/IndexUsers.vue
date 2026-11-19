@@ -70,7 +70,7 @@ onBeforeMount(getUsers)
         </ul>
 
         <Modal v-model="confirmModalVisible">
-          <template #activator="{open, close}">
+          <template #activator="{open}">
             <ButtonUi class="w-full"
                       :disabled="!selectedUser?.id"
                       @click="open"
