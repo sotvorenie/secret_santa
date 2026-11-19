@@ -9,6 +9,7 @@ export interface StepButon {
 export interface Step {
     id: number
     text: () => string
+    fox: string
     btn: StepButon
     onClick: () => void
 }
